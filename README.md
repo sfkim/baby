@@ -4,3 +4,5 @@ for baby project
 
 **Dignity** always prevails.  
 ![Druwa](http://jjalbang.today/jjLu.gif)
+
+completed opening this projects in PyCharm
