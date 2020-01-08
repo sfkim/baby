@@ -16,6 +16,6 @@ export default {
 .footer-container {
   width: 100%;
   height: 100%;
-  background-color: blue;
+  background-color: rgb(224, 224, 224);
 }
 </style>
