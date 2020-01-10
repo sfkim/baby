@@ -2,12 +2,14 @@
 // import components
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import Home from './components/Home.vue'
 
 export default {
   name: 'app',
   components: {
     //사용할 components 이름 추가(import 이름과 동일)
-    Header, Footer
+    Header, Footer,
+    Home
   }
 }
 </script>
@@ -16,7 +18,11 @@ export default {
   <div id="app">
     <!-- Header를 위치시킬 공간 지정(top class로 지정)-->
     <div class='top'>
-      <Header></Header>
+      <Header msg="Home"></Header>
+    </div>
+
+    <div class='content'>
+      <Home></Home>
     </div>
 
     <!-- Footer를 위치시킬 공간 지정(bottom class로 지정)-->
@@ -62,5 +68,12 @@ body {
   left: 0;
   width: 100%;
   height: 60px;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 </style>

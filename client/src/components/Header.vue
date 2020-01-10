@@ -10,6 +10,7 @@ export default {
 
 <template>
   <div class="header-container">
+    <div class="title">{{msg}}</div>
   </div>
 </template>
 
@@ -18,5 +19,10 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgb(224, 224, 224);
+}
+.title {
+  font-size: 25px;
+  padding-top: 16px;
+  padding-left: 70px;
 }
 </style>
