@@ -1,19 +1,46 @@
 <script>
-export default {
-  name: 'Footer',
-  props: {
-    msg: String
-  }
+import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+
+  export default {
+    name: 'Footer',
+    props: {
+    },
+    methods: {
+      onClickHome () {
+        this.updateCurrentPage('home');
+      },
+      onClickMyInfo () {
+        this.updateCurrentPage('my-info');
+      },
+      onClickChat () {
+        this.updateCurrentPage('chat');
+      },
+      onClickWiki () {
+        this.updateCurrentPage('wiki');
+      },
+      onClickSetting () {
+        this.updateCurrentPage('setting');
+      },
+      ...mapMutations ([
+        'updateCurrentPage'
+      ]),
+    },
+    computed: {
+      ...mapGetters([
+        'currentPage'
+      ])
+    }
 }
 </script>
 
 <template>
   <div class="footer-container">
-    <div id="icon-home" class="icon-item"></div>
-    <div id="icon-my-info" class="icon-item"></div>
-    <div id="icon-chat" class="icon-item"></div>
-    <div id="icon-wiki" class="icon-item"></div>
-    <div id="icon-setting" class="icon-item"></div>
+    <div id="icon-home" class="icon-item" @click="onClickHome"></div>
+    <div id="icon-my-info" class="icon-item" @click="onClickMyInfo"></div>
+    <div id="icon-chat" class="icon-item" @click="onClickChat"></div>
+    <div id="icon-wiki" class="icon-item" @click="onClickWiki"></div>
+    <div id="icon-setting" class="icon-item" @click="onClickSetting"></div>
   </div>
 </template>
 
@@ -21,7 +48,7 @@ export default {
 .footer-container {
   width: 100%;
   height: 100%;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(200, 237, 230);
 }
 
 .icon-item {
