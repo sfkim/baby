@@ -1,6 +1,5 @@
 <script>
 export default {
-  //set name 'Setting'
   name: 'Setting',
   props: {
     msg: String
@@ -9,17 +8,8 @@ export default {
 </script>
 
 <template>
-  <div class="Setting-Container">
-    <h3>THIS IS Setting</h3>
-  </div>
+  <div>Setting page</div>
 </template>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-.Setting-Container {
-}
 </style>

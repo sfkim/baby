@@ -1,4 +1,4 @@
-# baby-bot
+# baby-bot client
 
 ## Project setup
 ```
