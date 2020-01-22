@@ -12,7 +12,7 @@ export default {
   props: {
   },
   methods: {
-    keyUpChat (e) {
+    keyDownChat (e) {
       this.setInputMessage(e.target.value);
       this.updateCurrentPage('chat');
     },
@@ -32,7 +32,7 @@ export default {
 <template>
   <div class="search-bar">
     <form id="search-box">
-      <input type="search" placeholder="Search" :value="inputMessage" @keydown.enter="keyUpChat"/>
+      <input type="search" placeholder="Search" :value="inputMessage" @keydown.enter="keyDownChat"/>
     </form>
   </div>
 </template>
