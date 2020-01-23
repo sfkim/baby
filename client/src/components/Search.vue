@@ -14,6 +14,7 @@ export default {
   methods: {
     keyDownChat (e) {
       this.setInputMessage(e.target.value);
+      e.target.value = ''
       this.updateCurrentPage('chat');
     },
     ...mapMutations ([
@@ -23,7 +24,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'currentPage'
+      'currentPage',
+      'inputMessage'
     ])
   }
 }
@@ -32,12 +34,16 @@ export default {
 <template>
   <div class="search-bar">
     <form id="search-box">
-      <input type="search" placeholder="Search" :value="inputMessage" @keydown.enter="keyDownChat"/>
+      <input type="search" placeholder="" @keydown.enter="keyDownChat"/>
     </form>
   </div>
 </template>
 
 <style>
+.search-bar {
+    width: 100%;
+    height: 100%;
+}
 a {
 	color: #69C;
 	text-decoration: none;

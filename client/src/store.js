@@ -6,7 +6,7 @@ Vue.use (Vuex);
 function defaultState () {
   return {
     currentPage: 'home',
-    inputMessage: null
+    inputMessage: ''
   }
 }
 
