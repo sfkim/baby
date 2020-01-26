@@ -44,42 +44,44 @@ export default {
     width: 100%;
     height: 100%;
 }
-a {
-	color: #69C;
-	text-decoration: none;
-}
-a:hover {
-	color: #F60;
-}
-h1 {
-	font: 1.7em;
-	line-height: 110%;
-	color: #000;
-}
-p {
-	margin: 0 0 20px;
+
+#search-box {
+    height: 100%;
+    padding-left: 10px;
 }
 
-input {
-	outline: none;
+#search-box input[type=search] {
+	width: 28px;
+	height: 30px;
+	padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
 }
+
+#search-box input[type=search]:focus {
+	width: 320px;
+	padding-left: 50px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+}
+
+#search-box input:-moz-placeholder,
+#search-box input::-webkit-input-placeholder {
+	color: transparent;
+}
+
 input[type=search] {
+    outline: none;
 	-webkit-appearance: textfield;
 	-webkit-box-sizing: content-box;
 	font-family: inherit;
 	font-size: 100%;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-	display: none;
-}
 
-
-input[type=search] {
-	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	background: #ededed url('../assets/icons/icons8-search-64.png') no-repeat 9px center;
+	background-size: 25px;
 	border: solid 1px #ccc;
 	padding: 9px 10px 9px 32px;
-	width: 55px;
 
 	-webkit-border-radius: 10em;
 	-moz-border-radius: 10em;
@@ -89,6 +91,12 @@ input[type=search] {
 	-moz-transition: all .5s;
 	transition: all .5s;
 }
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none;
+}
+
 input[type=search]:focus {
 	width: 130px;
 	background-color: #fff;
@@ -99,34 +107,8 @@ input[type=search]:focus {
 	box-shadow: 0 0 5px rgba(109,207,246,.5);
 }
 
-
-input:-moz-placeholder {
-	color: #999;
-}
+input:-moz-placeholder,
 input::-webkit-input-placeholder {
 	color: #999;
-}
-
-#search-box input[type=search] {
-	width: 15px;
-	padding-left: 10px;
-	color: transparent;
-	cursor: pointer;
-}
-#search-box input[type=search]:hover {
-	background-color: #fff;
-}
-#search-box input[type=search]:focus {
-	width: 130px;
-	padding-left: 32px;
-	color: #000;
-	background-color: #fff;
-	cursor: auto;
-}
-#search-box input:-moz-placeholder {
-	color: transparent;
-}
-#search-box input::-webkit-input-placeholder {
-	color: transparent;
 }
 </style>

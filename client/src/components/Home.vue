@@ -22,5 +22,6 @@ export default {
 .search-container {
     width: 100%;
     height: 50px;
+    padding-top: 10px;
 }
 </style>
