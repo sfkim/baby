@@ -86,9 +86,10 @@ body {
 }
 
 .content {
-    height: 100%;
+    max-height: 725px;
     width: 100%;
     margin-top: 60px;
     margin-bottom: 60px;
+    overflow: scroll;
 }
 </style>
