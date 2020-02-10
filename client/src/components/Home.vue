@@ -14,7 +14,7 @@ export default {
     <div class="embed-container" style="TEXT-ALIGN: center">
       <object type="text/html" width="320" height="180" data="//www.youtube.com/v/dEPirXVVhhs?autoplay=1&loop=1" allowscreen=""/>
     </div>
-    <div class="search-container">
+    <div class="search-contaginer">
       <Search></Search>
     </div>
   </div>
