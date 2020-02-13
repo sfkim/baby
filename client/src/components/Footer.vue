@@ -38,21 +38,26 @@ import { mapGetters } from 'vuex';
   <div class="footer-container">
     <div id="icon-home" class="icon-item" @click="onClickHome">
       <div class="icon-title">홈</div>
+      <div class="current-page" v-if="currentPage == 'home'"></div>
     </div>
     <div id="icon-my-info" class="icon-item" @click="onClickMyInfo">
       <div class="icon-title">나의 아기</div>
+      <div class="current-page" v-if="currentPage == 'my-info'"></div>
     </div>
 
     <div id="icon-chat" class="icon-item" @click="onClickChat">
       <div class="icon-title">채팅</div>
+      <div class="current-page" v-if="currentPage == 'chat'"></div>
     </div>
 
     <div id="icon-wiki" class="icon-item" @click="onClickWiki">
       <div class="icon-title">아기 사전</div>
+      <div class="current-page" v-if="currentPage == 'wiki'"></div>
     </div>
 
     <div id="icon-setting" class="icon-item" @click="onClickSetting">
       <div class="icon-title">설정</div>
+      <div class="current-page" v-if="currentPage == 'setting'"></div>
     </div>
 
   </div>
@@ -72,10 +77,17 @@ import { mapGetters } from 'vuex';
   background-position: center top;
   background-color: rgb(200, 237, 230);
   float: left;
+  vertical-align: bottom;
 }
 
 .icon-item:hover {
-  filter: brightness(90%);
+  font-weight: bold;
+}
+
+.current-page {
+  height: 60px;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-top: 5px solid black;
 }
 
 .icon-title {
