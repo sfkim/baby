@@ -57,7 +57,7 @@ import { mapGetters } from 'vuex';
 
     <div id="icon-setting" class="icon-item" @click="onClickSetting">
       <div class="icon-title">설정</div>
-      <div class="current-page" v-if="currentPage == 'setting'"></div>
+      <div class="current-page" v-if="currentPage == 'setting'">왜 안되냐</div>
     </div>
 
   </div>
