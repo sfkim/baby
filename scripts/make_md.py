@@ -1,0 +1,7 @@
+f = open('md.txt', 'r+', encoding='utf-8')
+r = f.read()
+print(r)
+print(r.replace('\n', '\\n'))
+f.write('\n')
+f.write(r.replace('\n', '\\n'))
+f.close()
