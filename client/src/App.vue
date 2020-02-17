@@ -48,20 +48,22 @@ import Setting from './components/Setting.vue'
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic&display=swap');
+
 /* for using height 100% */
-html {
+html, body {
   height: 100%;
 }
 
 body {
   margin: 0;
   height: 100%;
+  font-family: 'Jua', 'Nanum Gothic', Helvetica, Apple SD Gothic Neo, sans-serif;
+  font-size: 18px;
 }
-
 #app {
   position: relative;
   width: 100%;
-  max-width: 412px;
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
