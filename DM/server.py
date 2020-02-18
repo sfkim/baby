@@ -27,11 +27,11 @@ def get_content():
     question = request.values.get('question', '')
     print(contents_obj)
     if question is '':
-        class_id = request.values.get('classID', 0)
-        chip = request.values.get('chip', 0)
+        class_id = request.values.get('classID', '0')
+        chip = request.values.get('chip', '0')
     else:
         class_id, confidence = get_prediction(question)
-        chip = 0;
+        chip = '0';
 
     content = get_content(class_id, chip)
 
@@ -41,7 +41,7 @@ def get_content():
 
 def get_prediction(question):
     str_header = {"content-type": "application/x-www-form-urlencoded; charset=UTF-8"}
-    dic_param = dict(question=question, lang="ko_KR", method="jsonList")
+    dic_param = dict(question=question, device="baby")
 
     str_url = config.CLASSIFY_SERVER_URL
 
@@ -56,6 +56,8 @@ def get_prediction(question):
     if str_result is None:
         return '0', '0'
 
+    print(str_result.content)
+    str_result = str_result.content
     dic_result = json.loads(str_result.decode('utf-8'))
     if len(dic_result["predictions"]) == 0:
         return '0', '0'
@@ -67,7 +69,8 @@ def get_prediction(question):
 
 
 def get_content(class_id, chip):
-    print(contents_obj[class_id][chip])
+    print(contents_obj["contents"][class_id][chip])
+    return contents_obj["contents"][class_id][chip]
 
 
 def load_contents():
