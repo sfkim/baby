@@ -5,7 +5,7 @@ from app import Flask
 from flask import request, jsonify
 from flask_cors import CORS
 from flask_api import status
-import request_utils
+import requests
 import json
 
 import config
@@ -16,6 +16,7 @@ CORS(app)
 
 contents_obj = dict()
 
+
 @app.route('/', methods=['GET'])
 def classifier_server():
     return "This is DM server", status.HTTP_200_OK
@@ -24,7 +25,7 @@ def classifier_server():
 @app.route('/get_content', methods=['GET'])
 def get_content():
     question = request.values.get('question', '')
-
+    print(contents_obj)
     if question is '':
         class_id = request.values.get('classID', 0)
         chip = request.values.get('chip', 0)
@@ -44,7 +45,13 @@ def get_prediction(question):
 
     str_url = config.CLASSIFY_SERVER_URL
 
-    str_result = request_utils.request("GET", str_url=str_url, dic_param=dic_param, dic_header=str_header)
+    n_timeout_sec = 5
+    try:
+        str_result = requests.request("GET", url=str_url, params=dic_param, headers=str_header, timeout=n_timeout_sec,
+                                      verify=False)
+        str_result.raise_for_status()
+    except Exception as err:
+        print("- Exception: {0}".format(err))
 
     if str_result is None:
         return '0', '0'
@@ -64,6 +71,7 @@ def get_content(class_id, chip):
 
 
 def load_contents():
+    global contents_obj
     with open('contents/contents.json') as json_file:
         contents_obj = json.load(json_file)
 
