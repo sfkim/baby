@@ -12,7 +12,7 @@ export default {
   },
   data () {
     return {
-      tempMsg: "표준 키가 궁금해",
+      tempMsg: "#### 표준 키가 궁금해",
       userMsg: '# H1 string  \n  ## h2 Heading  \n  ### h3 Heading  \n  ## Horizontal Rules \n # H1 string  \n  ## h2 Heading  \n  ### h3 Heading  \n  ## Horizontal Rules \n # H1 string  \n  ## h2 Heading  \n  ### h3 Heading  \n  ## Horizontal Rules \n',
       userTable: '## 신체 성장 표준치 \n ### 남아 1개월 \n  |백분위수|몸무게(kg)|키(cm)|머리둘레(cm)| \n |:-:|:-:|:-:|:-:| \n 3|3.4|51.1|35.1| \n  5|3.6|51.5|35.4| \n 10|3.8|52.2|35.8| \n 15|3.9|52.7|36.1| \n 25|4.1|53.4|36.5| \n 50|4.5|54.7|37.3| \n 75|4.9|56.0|38.1| \n 85|5.1|56.7|38.5| \n 90|5.3|57.2|38.8| \n 95|5.5|57.9|39.2| \n 97|5.7|58.4|39.5| \n',
       userSleep: '## 개월별 평균 수면시간 \n |개월수|밤잠시간|낮잠시간|낮잠횟수|총 수면시간| \n |:-:|:-:|:-:|:-:|:-:| \n 생후 1개월|8~9시간|7시간|3~4회|15~16시간| \n 생후 3개월|10시간|5시간|3회|15시간| \n 생후 6개월|11시간|3시간 15분|2회|14시간 15분| \n 생후 9개월|11시간|3시간|2회|14시간| \n 생후 12개월|11시간|2~3시간|1~2회|13~14시간| \n 생후 18개월|11시간|2시간|1회|13시간| \n 생후 24개월|11시간|1~2시간|1회|12~13시간| \n 생후 36개월|10시간 30분|1시간 30분|1회|12시간| \n',
@@ -146,6 +146,10 @@ export default {
 
 .md-container .markdown-body {
     padding: 10px;
+    font-family: 'Jua', 'Nanum Gothic', Helvetica, Apple SD Gothic Neo, sans-serif;
+    .p {
+        font-family: 'Jua', 'Nanum Gothic', Helvetica, Apple SD Gothic Neo, sans-serif;
+    }
 }
 </style>
 
