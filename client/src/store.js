@@ -1,13 +1,32 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Axios from 'axios';
 
 Vue.use (Vuex);
 
 function defaultState () {
   return {
     currentPage: 'home',
-    inputMessage: ''
+    inputMessage: '',
+    chatData: [{
+      index: 0,
+      speaker: 'bot',
+      content: '#### 안녕하세요. \n 우리아기앱에 질문해주셔서 감사합니다.'
+    },]
   }
+}
+
+function getContents (state) {
+  Axios.get('http://localhost:8895/get_content?question=' + state.inputMessage)
+      .then(res => {
+        var inputObj = {
+          index: state.chatData.length,
+          speaker: 'bot',
+          content: res.data.content
+        }
+        state.chatData.push(inputObj);
+        console.log(state.chatData);
+      })
 }
 
 const store = new Vuex.Store ({
@@ -15,10 +34,16 @@ const store = new Vuex.Store ({
   mutations: {
     updateCurrentPage (state, currentPage) {
       state.currentPage = currentPage;
-      console.log(state.currentPage);
     },
     setInputMessage (state, message) {
       state.inputMessage = message;
+      var inputObj = {
+        index: state.chatData.length,
+        speaker: 'user',
+        content: '#### ' + message
+      };
+      state.chatData.push(inputObj);
+      getContents(state);
     }
   },
   getters: {
@@ -27,6 +52,9 @@ const store = new Vuex.Store ({
     },
     inputMessage: state => {
       return state.inputMessage
+    },
+    chatData: state => {
+      return state.chatData
     }
   }
 });

@@ -22,7 +22,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'inputMessage'
+      'inputMessage',
+      'chatData'
     ])
   }
 }
@@ -30,54 +31,24 @@ export default {
 
 <template>
   <div>
-    <div class='message-container'>
-        <div class='user-profile'></div>
-        <div class='md-container-right'>
-            <markdown-it-vue :content="tempMsg"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='popo-profile'></div>
-        <div class='md-container'>
-            <markdown-it-vue :content="userMsg"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='user-profile'></div>
-        <div class='md-container-right'>
-            <markdown-it-vue :content="tempMsg"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='popo-profile'></div>
-        <div class='md-container'>
-            <markdown-it-vue :content="userTable"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='user-profile'></div>
-        <div class='md-container-right'>
-            <markdown-it-vue :content="tempMsg"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='popo-profile'></div>
-        <div class='md-container'>
-            <markdown-it-vue :content="userSleep"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='popo-profile'></div>
-        <div class='md-container'>
-            <markdown-it-vue :content="userImage"></markdown-it-vue>
-        </div>
-    </div>
-    <div class='message-container'>
-        <div class='popo-profile'></div>
-        <div class='md-container'>
-            <markdown-it-vue :content="userTable2"></markdown-it-vue>
-        </div>
-    </div>
+      <div v-for="item in chatData" :key="item.index">
+          <div v-if="item.speaker == 'bot'">
+              <div class='message-container'>
+              <div class='popo-profile'></div>
+                  <div class='md-container'>
+                      <markdown-it-vue :content=item.content></markdown-it-vue>
+                  </div>
+              </div>
+          </div>
+          <div v-else>
+              <div class='message-container'>
+              <div class='user-profile'></div>
+                  <div class='md-container-right'>
+                      <markdown-it-vue :content=item.content></markdown-it-vue>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </template>
 
