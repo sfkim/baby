@@ -12,7 +12,7 @@ import config
 
 app = Flask(__name__, static_url_path='')
 app.static_folder = 'static'
-CORS(app)
+CORS(app, resources={r'*': {'origins': '*'}})
 
 contents_obj = dict()
 
@@ -25,7 +25,7 @@ def classifier_server():
 @app.route('/get_content', methods=['GET'])
 def get_content():
     question = request.values.get('question', '')
-    print(contents_obj)
+    print(question)
     if question is '':
         class_id = request.values.get('classID', '0')
         chip = request.values.get('chip', '0')
