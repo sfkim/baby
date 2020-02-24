@@ -14,7 +14,7 @@ import Setting from './components/Setting.vue';
     components: {
       //사용할 components 이름 추가(import 이름과 동일)
       Header, Footer,
-      Home, Chat, Wiki, MyInfo, Setting,
+      Home, Chat, Wiki, MyInfo, Setting
     },
     computed: {
       ...mapGetters([
