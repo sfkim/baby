@@ -1,10 +1,14 @@
 <script>
 import { mapGetters } from 'vuex';
+import Search from './Search.vue';
 
 export default {
   name: 'Header',
   props: {
     msg: String
+  },
+  components: {
+    Search
   },
   computed: {
     ...mapGetters([
@@ -16,19 +20,28 @@ export default {
 
 <template>
   <div class="header-container">
-    <div class="title">{{currentPage}}</div>
+    <span class="title" v-if="currentPage=='home'">아가사랑</span>
+    <span class="title" v-if="currentPage!='home'">{{currentPage}}</span>
+    <div class="search_wrap">
+      <Search></Search>
+    </div>
   </div>
 </template>
 
 <style>
 .header-container {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgb(224, 224, 224);
 }
 .title {
   font-size: 25px;
-  padding-top: 16px;
-  padding-left: 70px;
+  margin: 0 auto;
+}
+.search_wrap {
+  position: absolute;
+  right: 10px;
+  float: right;
 }
 </style>

@@ -5,15 +5,24 @@ export default {
 </script>
 
 <template>
-  <div class="menu-wrapper">
-    <div id="menu-1" class="menu-sector">메뉴 1</div>
-    <div id="menu-2" class="menu-sector">메뉴 2</div>
-    <div id="menu-3" class="menu-sector">메뉴 3</div>
-    <div id="menu-4" class="menu-sector">메뉴 4</div>
-    <div id="menu-5" class="menu-sector">메뉴 5</div>
-    <div id="menu-6" class="menu-sector">메뉴 6</div>
-    <div id="menu-7" class="menu-sector">메뉴 7</div>
-    <div id="menu-8" class="menu-sector">메뉴 8</div>
+  <div class="menu_wrapper">
+    <div class="menu1">
+      <div class="thumnail">썸네일1</div>
+      <div class="thumnail">썸네일2</div>
+      <div class="thumnail">썸네일3</div>
+    </div>
+    <div class="menu2">
+    </div>
+    <div class="menu3">
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">메뉴</div>
+      <div class="menu_item">마지막메뉴</div>
+    </div>
   </div>
 </template>
 
@@ -23,11 +32,28 @@ export default {
   margin: 0px;
 }
 
-.menu-wrapper {
-
+.menu_wrapper {
+  height: 100%;
 }
-
-.menu-sector {
+.menu1 {
+  width: 1000px;
+  height: 250px;
+}
+.menu1:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+.thumnail {
+  width: 150px;
+  height: 200px;
+  margin: 25px 10px;
+  background-color: white;
+  border: 1px solid #eee;
+  float: left;
+  background-image: url(http://via.placeholder.com/150x200);
+}
+.menu_item {
   margin: 45px;
   max-width: 100px;
   max-height: 100px;
@@ -38,5 +64,8 @@ export default {
   background-color: rgb(240, 206, 203);
   border: 4px solid rgb(230, 96, 116);
   border-radius: 30px;
+}
+.menu3 {
+  height: 1000px;
 }
 </style>
