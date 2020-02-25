@@ -1,16 +1,21 @@
 <script>
 import Menu from './Menu.vue'
+import Search from './Search.vue';
 
 export default {
   name: 'Home',
   components: {
-    Menu
+    Menu,
+    Search
   }
 }
 </script>
 
 <template>
   <div class="home_wrap">
+    <div class="search-container">
+      <Search></Search>
+    </div>
     <div class="menu-container">
       <Menu></Menu>
     </div>
