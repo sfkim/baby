@@ -17,12 +17,20 @@ function defaultState () {
 }
 
 function getContents (state) {
-  Axios.get('http://localhost:8895/get_content?question=' + state.inputMessage)
+  Axios.get('http://15.165.90.78:8895/get_content?question=' + state.inputMessage)
       .then(res => {
         var inputObj = {
           index: state.chatData.length,
           speaker: 'bot',
           content: res.data.content
+        }
+        state.chatData.push(inputObj);
+        console.log(state.chatData);
+      }).catch((error) => {
+        var inputObj = {
+          index: state.chatData.length,
+          speaker: 'bot',
+          content: "#### Network 문제가 발생했습니다. \n 잠시후에 다시 이용해주세요."
         }
         state.chatData.push(inputObj);
         console.log(state.chatData);
