@@ -31,7 +31,7 @@ def get_content():
         chip = request.values.get('chip', '0')
     else:
         class_id, confidence = get_prediction(question)
-        chip = '0';
+        chip = '0'
 
     content = get_content(class_id, chip)
 
