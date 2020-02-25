@@ -6,6 +6,9 @@ export default {
   props: {
     msg: String
   },
+  components: {
+
+  },
   computed: {
     ...mapGetters([
       'currentPage'
@@ -16,19 +19,20 @@ export default {
 
 <template>
   <div class="header-container">
-    <div class="title">{{currentPage}}</div>
+    <span class="title" v-if="currentPage=='home'">아가사랑</span>
+    <span class="title" v-else>{{currentPage}}</span>
   </div>
 </template>
 
 <style>
 .header-container {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgb(224, 224, 224);
 }
 .title {
   font-size: 25px;
-  padding-top: 16px;
-  padding-left: 70px;
+  margin: 0 auto;
 }
 </style>

@@ -1,13 +1,13 @@
 <script>
 // import components
 import { mapGetters } from 'vuex';
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Home from './components/Home.vue'
-import Chat from './components/Chat.vue'
-import Wiki from './components/Wiki.vue'
-import MyInfo from './components/MyInfo.vue'
-import Setting from './components/Setting.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import Home from './components/Home.vue';
+import Chat from './components/Chat.vue';
+import Wiki from './components/Wiki.vue';
+import MyInfo from './components/MyInfo.vue';
+import Setting from './components/Setting.vue';
 
   export default {
     name: 'app',
@@ -29,7 +29,6 @@ import Setting from './components/Setting.vue'
     <!-- Header를 위치시킬 공간 지정(top class로 지정)-->
     <div class='top'>
       <Header></Header>
-
     </div>
 
     <div class='content'>
@@ -62,7 +61,6 @@ body {
   font-size: 18px;
 }
 #app {
-  position: relative;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -88,10 +86,14 @@ body {
 }
 
 .content {
-    max-height: 725px;
-    width: 100%;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    overflow: scroll;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+  background-color: #e0f2f0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 </style>

@@ -33,9 +33,9 @@ export default {
 
 <template>
   <div class="search-bar">
-    <form id="search-box">
+    <div id="search-box">
       <input type="search" placeholder="" @keydown.enter="keyDownChat"/>
-    </form>
+    </div>
   </div>
 </template>
 

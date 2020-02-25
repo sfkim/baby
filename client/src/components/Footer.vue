@@ -36,30 +36,18 @@ import { mapGetters } from 'vuex';
 
 <template>
   <div class="footer-container">
-    <div id="icon-home" class="icon-item" @click="onClickHome">
-      <div class="icon-title">홈</div>
-      <div class="current-page" v-if="currentPage == 'home'"></div>
-    </div>
-    <div id="icon-my-info" class="icon-item" @click="onClickMyInfo">
-      <div class="icon-title">나의 아기</div>
-      <div class="current-page" v-if="currentPage == 'my-info'"></div>
-    </div>
-
-    <div id="icon-chat" class="icon-item" @click="onClickChat">
-      <div class="icon-title">채팅</div>
-      <div class="current-page" v-if="currentPage == 'chat'"></div>
-    </div>
-
-    <div id="icon-wiki" class="icon-item" @click="onClickWiki">
-      <div class="icon-title">아기 사전</div>
-      <div class="current-page" v-if="currentPage == 'wiki'"></div>
-    </div>
-
-    <div id="icon-setting" class="icon-item" @click="onClickSetting">
-      <div class="icon-title">설정</div>
-      <div class="current-page" v-if="currentPage == 'setting'"></div>
-    </div>
-
+    <ul class="footer">
+      <li class="footer_item" id="icon-home" @click="onClickHome" v-if="currentPage!='home'"><span class="footer_link">홈</span></li>
+      <li class="footer_item active" id="icon-home" @click="onClickHome" v-if="currentPage=='home'"><span class="footer_link">홈</span></li>
+      <li class="footer_item" id="icon-my-info" @click="onClickMyInfo" v-if="currentPage!='my-info'"><span class="footer_link">나의 아기</span></li>
+      <li class="footer_item active" id="icon-my-info" @click="onClickMyInfo" v-if="currentPage=='my-info'"><span class="footer_link">나의 아기</span></li>
+      <li class="footer_item" id="icon-chat" @click="onClickChat" v-if="currentPage!='chat'"><span class="footer_link">채팅</span></li>
+      <li class="footer_item active" id="icon-chat" @click="onClickChat" v-if="currentPage=='chat'"><span class="footer_link">채팅</span></li>
+      <li class="footer_item" id="icon-wiki" @click="onClickWiki" v-if="currentPage!='wiki'"><span class="footer_link">아기 사전</span></li>
+      <li class="footer_item active" id="icon-wiki" @click="onClickWiki" v-if="currentPage=='wiki'"><span class="footer_link">아기 사전</span></li>
+      <li class="footer_item" id="icon-setting" @click="onClickSetting" v-if="currentPage!='setting'"><span class="footer_link">설정</span></li>
+      <li class="footer_item active" id="icon-setting" @click="onClickSetting" v-if="currentPage=='setting'"><span class="footer_link">설정</span></li>
+    </ul>
   </div>
 </template>
 
@@ -68,7 +56,31 @@ import { mapGetters } from 'vuex';
   width: 100%;
   height: 100%;
 }
-
+.footer {
+  display: table;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
+.footer_item {
+  display: table-cell;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 40px;
+  background-color: white;
+}
+.footer_item.active {
+  background-color: rgb(23, 113, 134, .5);
+  color: white;
+  text-weight: bold;
+}
+.footer_link {
+  display: block;
+  position: relative;
+  top: 38px;
+  font-size: 16px;
+  text-align: center;
+}
 .icon-item {
   width: 20%;
   height: 100%;
@@ -78,10 +90,6 @@ import { mapGetters } from 'vuex';
   background-color: rgb(200, 237, 230);
   float: left;
   vertical-align: bottom;
-}
-
-.icon-item:hover {
-  font-weight: bold;
 }
 
 .current-page {

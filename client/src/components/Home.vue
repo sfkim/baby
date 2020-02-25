@@ -1,18 +1,18 @@
 <script>
-import Search from './Search.vue'
 import Menu from './Menu.vue'
+import Search from './Search.vue'
 
 export default {
   name: 'Home',
   components: {
-    Search, Menu
+    Menu, Search
   }
 }
 </script>
 
 <template>
-  <div>
-    <div class="search-container">
+  <div class="home_wrap">
+    <div class="search_wrap">
       <Search></Search>
     </div>
     <div class="menu-container">
@@ -23,10 +23,10 @@ export default {
 </template>
 
 <style>
-.search-container {
-    width: 100%;
-    height: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.home_wrap {
+  min_height: 100%;
+}
+.search_wrap {
+  margin: 10px 0;
 }
 </style>
