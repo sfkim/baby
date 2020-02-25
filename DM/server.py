@@ -31,7 +31,7 @@ def get_content():
         chip = request.values.get('chip', '0')
     else:
         class_id, confidence = get_prediction(question)
-        chip = '0';
+        chip = '0'
 
     content = get_content(class_id, chip)
 
@@ -52,6 +52,7 @@ def get_prediction(question):
         str_result.raise_for_status()
     except Exception as err:
         print("- Exception: {0}".format(err))
+        return '0', '0'
 
     if str_result is None:
         return '0', '0'

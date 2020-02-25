@@ -9,18 +9,29 @@ import Wiki from './components/Wiki.vue';
 import MyInfo from './components/MyInfo.vue';
 import Setting from './components/Setting.vue';
 
-  export default {
-    name: 'app',
-    components: {
-      //사용할 components 이름 추가(import 이름과 동일)
-      Header, Footer,
-      Home, Chat, Wiki, MyInfo, Setting
-    },
-    computed: {
-      ...mapGetters([
-        'currentPage'
-      ])
+export default {
+  name: 'app',
+  components: {
+    //사용할 components 이름 추가(import 이름과 동일)
+    Header, Footer,
+    Home, Chat, Wiki, MyInfo, Setting
+  },
+  computed: {
+    ...mapGetters([
+      'currentPage'
+    ])
+  },
+  mounted () {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  methods: {
+    handleResize() {
+      var clientHeight = document.documentElement.clientHeight;
+      var content = document.getElementsByClassName('content');
+      content[0].style.height = ((clientHeight - 120) + 'px');
     }
+  }
 }
 </script>
 
