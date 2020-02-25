@@ -93,6 +93,7 @@ body {
   margin-bottom: 60px;
   padding-bottom: 60px;
   background-color: #e0f2f0;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 </style>

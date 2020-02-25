@@ -7,9 +7,11 @@ export default {
 <template>
   <div class="menu_wrapper">
     <div class="menu1">
+    <div class="thumnail_wrap">
       <div class="thumnail">썸네일1</div>
       <div class="thumnail">썸네일2</div>
       <div class="thumnail">썸네일3</div>
+    </div>
     </div>
     <div class="menu2">
     </div>
@@ -36,13 +38,17 @@ export default {
   height: 100%;
 }
 .menu1 {
-  width: 1000px;
   height: 250px;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 .menu1:after {
   display: block;
   content: '';
   clear: both;
+}
+.thumnail_wrap {
+  width: 520px;
 }
 .thumnail {
   width: 150px;
