@@ -52,6 +52,7 @@ def get_prediction(question):
         str_result.raise_for_status()
     except Exception as err:
         print("- Exception: {0}".format(err))
+        return '0', '0'
 
     if str_result is None:
         return '0', '0'
