@@ -1,6 +1,5 @@
 <script>
 import { mapGetters } from 'vuex';
-import Search from './Search.vue'
 
 export default {
   name: 'Header',
@@ -8,7 +7,7 @@ export default {
     msg: String
   },
   components: {
-    Search
+
   },
   computed: {
     ...mapGetters([
@@ -22,9 +21,6 @@ export default {
   <div class="header-container">
     <span class="title" v-if="currentPage=='home'">아가사랑</span>
     <span class="title" v-else>{{currentPage}}</span>
-    <div class="search_wrap">
-      <Search></Search>
-    </div>
   </div>
 </template>
 
@@ -38,10 +34,5 @@ export default {
 .title {
   font-size: 25px;
   margin: 0 auto;
-}
-.search_wrap {
-  position: absolute;
-  right: 10px;
-  float: right;
 }
 </style>
