@@ -1,6 +1,6 @@
 <script>
 import { mapGetters } from 'vuex';
-import Search from './Search.vue';
+import Search from './Search.vue'
 
 export default {
   name: 'Header',
@@ -21,7 +21,7 @@ export default {
 <template>
   <div class="header-container">
     <span class="title" v-if="currentPage=='home'">아가사랑</span>
-    <span class="title" v-if="currentPage!='home'">{{currentPage}}</span>
+    <span class="title" v-else>{{currentPage}}</span>
     <div class="search_wrap">
       <Search></Search>
     </div>
