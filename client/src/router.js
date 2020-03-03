@@ -15,7 +15,10 @@ export default new router({
 		{path: '/', component: Home},
 		{path: '/MyInfo', component: MyInfo},
 		{path: '/Chat', component: Chat},
-		{path: '/wiki', component: Wiki},
+		{path: '/Wiki', component: Wiki},
 		{path: '/Setting', component: Setting}
-	]
+	],
+	scrollBehavior(to, from, savedPosition) {
+		return { x: 0, y: 0 }
+	}
 })
