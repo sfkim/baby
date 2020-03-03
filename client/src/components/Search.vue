@@ -16,6 +16,7 @@ export default {
       this.setInputMessage(e.target.value);
       e.target.value = ''
       this.updateCurrentPage('chat');
+      this.$router.push('/Chat');
     },
     ...mapMutations ([
       'updateCurrentPage',

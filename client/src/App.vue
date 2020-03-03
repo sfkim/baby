@@ -3,18 +3,13 @@
 import { mapGetters } from 'vuex';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import Home from './components/Home.vue';
-import Chat from './components/Chat.vue';
-import Wiki from './components/Wiki.vue';
-import MyInfo from './components/MyInfo.vue';
-import Setting from './components/Setting.vue';
+import router from './router';
 
 export default {
   name: 'app',
   components: {
     //사용할 components 이름 추가(import 이름과 동일)
-    Header, Footer,
-    Home, Chat, Wiki, MyInfo, Setting
+    Header, Footer
   },
   computed: {
     ...mapGetters([
@@ -43,11 +38,7 @@ export default {
     </div>
 
     <div class='content'>
-      <Home v-if="currentPage == 'home'"></Home>
-      <MyInfo v-if="currentPage == 'my-info'"></MyInfo>
-      <Chat v-if="currentPage == 'chat'"></Chat>
-      <Wiki v-if="currentPage == 'wiki'"></Wiki>
-      <Setting v-if="currentPage == 'setting'"></Setting>
+      <router-view default="/" :key="$route.fullPath"></router-view>
     </div>
 
     <!-- Footer를 위치시킬 공간 지정(bottom class로 지정)-->
