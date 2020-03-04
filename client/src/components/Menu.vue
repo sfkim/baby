@@ -35,7 +35,8 @@ export default {
 }
 
 .menu_wrapper {
-  height: 100%;
+	height: 100%;
+  overflow-y: scroll;
 }
 .menu1 {
   height: 250px;

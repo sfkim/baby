@@ -55,7 +55,6 @@ export default {
 html, body {
   height: 100%;
 }
-
 body {
   margin: 0;
   height: 100%;
@@ -63,39 +62,38 @@ body {
   font-size: 18px;
 }
 #app {
-  width: 100%;
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 /* place top and set area */
 .top {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 60px;
+  background-color: #FFF;
 }
 
 /* place bottom and set area */
 .bottom {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 60px;
 }
 
 .content {
-  position: relative;
   height: 100%;
   width: 100%;
   margin-top: 60px;
   margin-bottom: 60px;
   padding-bottom: 60px;
   background-color: #e0f2f0;
-  overflow-x: hidden;
-  overflow-y: scroll;
+
 }
 </style>
