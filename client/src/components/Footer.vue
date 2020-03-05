@@ -25,11 +25,11 @@ import { mapGetters } from 'vuex';
 <template>
   <div class="footer-container">
     <ul class="footer">
-      <li class="footer_item" id="icon-home" @click="page('/')"><span class="footer_link">홈</span></li>
-      <li class="footer_item" id="icon-my-info" @click="page('/MyInfo')"><span class="footer_link">나의 아기</span></li>
-      <li class="footer_item" id="icon-chat" @click="page('/Chat')"><span class="footer_link">채팅</span></li>
-      <li class="footer_item" id="icon-wiki" @click="page('/Wiki')"><span class="footer_link">아기 사전</span></li>
-      <li class="footer_item" id="icon-setting" @click="page('/Setting')"><span class="footer_link">설정</span></li>
+      <li class="footer_item" :class="{footer_focus: $route.name == 'Home'}" id="icon-home" @click="page('/')"><span class="footer_link">홈</span></li>
+      <li class="footer_item" :class="{footer_focus: $route.name == 'MyInfo'}" id="icon-my-info" @click="page('/MyInfo')"><span class="footer_link">나의 아기</span></li>
+      <li class="footer_item" :class="{footer_focus: $route.name == 'Chat'}" id="icon-chat" @click="page('/Chat')"><span class="footer_link">채팅</span></li>
+      <li class="footer_item" :class="{footer_focus: $route.name == 'Wiki'}" id="icon-wiki" @click="page('/Wiki')"><span class="footer_link">아기 사전</span></li>
+      <li class="footer_item" :class="{footer_focus: $route.name == 'Setting'}" id="icon-setting" @click="page('/Setting')"><span class="footer_link">설정</span></li>
     </ul>
   </div>
 </template>
@@ -52,11 +52,6 @@ import { mapGetters } from 'vuex';
   background-size: 40px;
   background-color: white;
 }
-.router-link-active {
-  background-color: rgb(23, 113, 134, .5);
-  color: white;
-  text-weight: bold;
-}
 .footer_link {
   display: block;
   position: relative;
@@ -75,10 +70,10 @@ import { mapGetters } from 'vuex';
   vertical-align: bottom;
 }
 
-.current-page {
-  height: 60px;
-  background-color: rgba(0, 0, 255, 0.2);
-  border-top: 5px solid black;
+.footer_focus {
+  background-color: rgb(23, 113, 134, .5);
+  color: white;
+  text-weight: bold;
 }
 
 .icon-title {

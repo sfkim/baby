@@ -12,11 +12,11 @@ Vue.use (router);
 export default new router({
 	mode: 'history',
 	routes: [
-		{path: '/', component: Home},
-		{path: '/MyInfo', component: MyInfo},
-		{path: '/Chat', component: Chat},
-		{path: '/Wiki', component: Wiki},
-		{path: '/Setting', component: Setting}
+		{path: '/', name: 'Home', component: Home},
+		{path: '/MyInfo', name: 'MyInfo', component: MyInfo},
+		{path: '/Chat', name: 'Chat', component: Chat},
+		{path: '/Wiki', name: 'Wiki', component: Wiki},
+		{path: '/Setting', name: 'Setting', component: Setting}
 	],
 	scrollBehavior (to, from, savedPosition) {
 		return { x: 0, y:0 }

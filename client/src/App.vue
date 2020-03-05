@@ -38,7 +38,7 @@ export default {
     </div>
 
     <div class='content'>
-      <router-view default="/" :key="$route.fullPath"></router-view>
+      <router-view id="view" default="/" :key="$route.fullPath"></router-view>
     </div>
 
     <!-- Footer를 위치시킬 공간 지정(bottom class로 지정)-->
@@ -64,8 +64,8 @@ body {
 #app {
   height: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
-
 /* place top and set area */
 .top {
   position: fixed;
@@ -74,9 +74,7 @@ body {
   right: 0;
   width: 100%;
   height: 60px;
-  background-color: #FFF;
 }
-
 /* place bottom and set area */
 .bottom {
   position: fixed;
@@ -86,14 +84,15 @@ body {
   width: 100%;
   height: 60px;
 }
-
 .content {
-  height: 100%;
   width: 100%;
   margin-top: 60px;
   margin-bottom: 60px;
-  padding-bottom: 60px;
-  background-color: #e0f2f0;
-
+  overflow: hidden;
+  background: linear-gradient(45deg, #CCFFFF, #FFCCCC);
+}
+#view {
+	height: 100%;
+	overflow: auto;
 }
 </style>

@@ -55,7 +55,6 @@ export default {
   width: 150px;
   height: 200px;
   margin: 25px 10px;
-  background-color: white;
   border: 1px solid #eee;
   float: left;
   background-image: url(http://via.placeholder.com/150x200);
