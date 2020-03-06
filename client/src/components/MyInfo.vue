@@ -2,6 +2,9 @@
 import MarkdownItVue from 'markdown-it-vue'
 import '../../node_modules/markdown-it-vue/dist/markdown-it-vue.css'
 
+import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'MyInfo',
   components: {
@@ -24,13 +27,34 @@ export default {
   mounted () {
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+    this.getContents();
   },
   methods: {
     handleResize() {
       var clientWidth = document.documentElement.clientWidth;
       var middleText = document.getElementsByClassName('middle-text');
       middleText[0].style.width = ((clientWidth - 90) + 'px');
-    }
+    },
+    getContents() {
+      // calculate days
+      var today = new Date();
+      var birth = this.userInformation.birth;
+      var year = parseInt(birth/10000);
+      var month = parseInt((birth%10000)/100);
+      var day = birth%100;
+      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+      const secondDate = new Date(year, month-1, day);
+
+      const diffDays = Math.round(Math.abs((today - secondDate) / oneDay));
+    },
+    ...mapMutations ([
+      'updateCurrentPage'
+    ])
+  },
+  computed: {
+    ...mapGetters([
+      'userInformation'
+    ])
   }
 }
 </script>

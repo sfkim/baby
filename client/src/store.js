@@ -12,7 +12,11 @@ function defaultState () {
       index: 0,
       speaker: 'bot',
       content: '#### 안녕하세요. \n 우리아기앱에 질문해주셔서 감사합니다.'
-    },]
+    },],
+    userInformation: {
+      babySex: 0, //0 is girl, 1 is boy
+      birth: 20191114 // birthday
+    }
   }
 }
 
@@ -63,6 +67,9 @@ const store = new Vuex.Store ({
     },
     chatData: state => {
       return state.chatData
+    },
+    userInformation: state => {
+      return state.userInformation
     }
   }
 });
