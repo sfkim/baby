@@ -19,7 +19,6 @@ export default {
       <Menu></Menu>
     </div>
   </div>
-
 </template>
 
 <style>

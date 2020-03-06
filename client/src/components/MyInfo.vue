@@ -51,7 +51,6 @@ export default {
       <markdown-it-vue :content=userImage></markdown-it-vue>
       <markdown-it-vue :content=userTable2></markdown-it-vue>
     </div>
-
   </div>
 </template>
 
@@ -84,9 +83,13 @@ export default {
   background-size: 40px 40px;
   float: left;
 }
-
+.time-container:after {
+	content: '';
+	clear: both;
+	display: block;
+}
 .my-baby-md-container {
-  width: 100%;
+  width: 90%;
   overflow: scroll;
   padding: 20px;
 }
