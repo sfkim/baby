@@ -70,8 +70,11 @@ def get_prediction(question):
 
 
 def get_content(class_id, chip):
-    print(contents_obj["contents"][class_id][chip])
-    return contents_obj["contents"][class_id][chip]
+    try:
+        return contents_obj["contents"][class_id][chip]
+    except Exception as err:
+        print("- Exception: {0}".format(err))
+        return 0
 
 
 def load_contents():
