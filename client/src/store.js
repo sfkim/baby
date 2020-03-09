@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import Axios from 'axios';
 
 Vue.use (Vuex);
+const DM_SERVER = 'http://15.165.90.78:8895/';
 
 function defaultState () {
   return {
@@ -22,7 +23,7 @@ function defaultState () {
 }
 
 function getContents (state) {
-  Axios.get('http://15.165.90.78:8895/get_content?question=' + state.inputMessage)
+  Axios.get(DM_SERVER + 'get_content?question=' + state.inputMessage)
       .then(res => {
         const inputObj = {
           index: state.chatData.length,
@@ -48,42 +49,38 @@ function getMonthContents (state, currentMonth) {
   let growthChip = currentMonth;
   if (state.userInformation.babySex == 0) growthChip += 100;
 
-  Axios.get('http://15.165.90.78:8895/get_content?classID=' + growthID + '&chip=' + growthChip)
+  Axios.get(DM_SERVER + 'get_content?classID=' + growthID + '&chip=' + growthChip)
     .then(res => {
       if(res.data.content != 0)
         state.monthInformation.push(res.data.content);
-    }).catch((error) => {
+      // 성장 발달 특징
+      const growthFeaturesID = 220;
+      const growthFeaturesClass = currentMonth;
+
+      Axios.get(DM_SERVER + 'get_content?classID=' + growthFeaturesID + '&chip=' + growthFeaturesClass)
+        .then(res => {
+          if(res.data.content != 0)
+            state.monthInformation.push(res.data.content);
+          // 개월수에 따른 놀이 방법
+          const growthPlayID = 200;
+          const growthPlayClass = currentMonth;
+          Axios.get(DM_SERVER + 'get_content?classID=' + growthPlayID + '&chip=' + growthPlayClass)
+            .then(res => {
+              if(res.data.content != 0)
+                state.monthInformation.push(res.data.content);
+              // 개월수에 따른 예방 접종
+              const growthVaccinationID = 100;
+              const growthVaccinationClass = currentMonth;
+
+              Axios.get(DM_SERVER + 'get_content?classID=' + growthVaccinationID + '&chip=' + growthVaccinationClass)
+                .then(res => {
+                  if(res.data.content != 0)
+                    state.monthInformation.push(res.data.content);
+                })
+            })
+        })
     })
-  // 성장 발달 특징
-  const growthFeaturesID = 220;
-  const growthFeaturesClass = currentMonth;
 
-  Axios.get('http://15.165.90.78:8895/get_content?classID=' + growthFeaturesID + '&chip=' + growthFeaturesClass)
-    .then(res => {
-      if(res.data.content != 0)
-        state.monthInformation.push(res.data.content);
-    }).catch((error) => {
-  })
-  // 개월수에 따른 놀이 방법
-  const growthPlayID = 200;
-  const growthPlayClass = currentMonth;
-
-  Axios.get('http://15.165.90.78:8895/get_content?classID=' + growthPlayID + '&chip=' + growthPlayClass)
-    .then(res => {
-      if(res.data.content != 0)
-        state.monthInformation.push(res.data.content);
-    }).catch((error) => {
-  })
-  // 개월수에 따른 예방 접종
-  const growthVaccinationID = 100;
-  const growthVaccinationClass = currentMonth;
-
-  Axios.get('http://15.165.90.78:8895/get_content?classID=' + growthVaccinationID + '&chip=' + growthVaccinationClass)
-    .then(res => {
-      if(res.data.content != 0)
-        state.monthInformation.push(res.data.content);
-    }).catch((error) => {
-  })
   console.log(state.monthInformation);
 }
 
