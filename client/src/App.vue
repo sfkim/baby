@@ -3,13 +3,15 @@
 import { mapGetters } from 'vuex';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import Search from './components/Search.vue'
 import router from './router';
+
 
 export default {
   name: 'app',
   components: {
     //사용할 components 이름 추가(import 이름과 동일)
-    Header, Footer
+    Header, Footer, Search
   },
   computed: {
     ...mapGetters([
@@ -39,6 +41,9 @@ export default {
 
     <div class='content'>
       <router-view id="view" default="/" :key="$route.fullPath"></router-view>
+      <div class="search_wrap">
+        <Search></Search>
+      </div>
     </div>
 
     <!-- Footer를 위치시킬 공간 지정(bottom class로 지정)-->
@@ -94,5 +99,9 @@ body {
 #view {
 	height: 100%;
 	overflow: auto;
+}
+.search_wrap {
+    position: absolute;
+    bottom: 70px;
 }
 </style>
