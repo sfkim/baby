@@ -121,8 +121,9 @@ export default {
   width: 90%;
   overflow: scroll;
   padding: 20px;
-}
-.markdown-body {
-  margin-top: 10px;
+
+  .markdown-body {
+    margin-top: 10px;
+  }
 }
 </style>
