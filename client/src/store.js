@@ -25,6 +25,11 @@ function defaultState () {
 function getContents (state) {
   Axios.get(DM_SERVER + 'get_content?question=' + state.inputMessage)
       .then(res => {
+        console.log(res.data.content);
+        if (res.data.content == 0) {
+          res.data.content = "#### 답변이 준비되지 않았습니다. \n 빠른 시간안에 제공하도록 하겠습니다."
+          //TODO: no content -> how to replace it?
+        }
         const inputObj = {
           index: state.chatData.length,
           speaker: 'bot',
