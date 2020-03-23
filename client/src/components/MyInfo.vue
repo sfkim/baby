@@ -120,10 +120,11 @@ export default {
 .my-baby-md-container {
   width: 90%;
   overflow: scroll;
-  padding: 20px;
+  padding: 0 20px 0 20px;
+}
 
-  .markdown-body {
-    margin-top: 10px;
-  }
+.my-baby-md-container .markdown-body {
+    margin-top: 20px;
+
 }
 </style>
