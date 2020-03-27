@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     keyDownChat (e) {
+      document.querySelector('#search-box input').blur();
       this.setInputMessage(e.target.value);
       e.target.value = ''
       this.$router.push('/Chat');
@@ -59,7 +60,7 @@ export default {
 }
 
 #search-box input[type=search]:focus {
-	width: 320px;
+	width: 280px;
 	padding-left: 50px;
 	color: #000;
 	background-color: #fff;
