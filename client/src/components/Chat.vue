@@ -21,18 +21,24 @@ export default {
     ])
   },
   mounted () {
-    //window.addEventListener('resize', this.handleResize);
-    //this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  updated () {
+    console.log("updated");
+    this.scrollToLastItem();
   },
   methods: {
     handleResize() {
       var clientWidth = document.documentElement.clientWidth;
       var content = document.getElementsByClassName('md-container');
-      console.log(content)
       for(var i = 0; i < content.length; i++) {
-        console.log(i)
         content[i].style.width = ((clientWidth - 102) + 'px');
       }
+    },
+    scrollToLastItem() {
+      var content = document.getElementsByClassName('md-container');
+      content[content.length - 1].scrollIntoView({behavior: "smooth"});
     }
   }
 }
