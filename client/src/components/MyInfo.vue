@@ -20,15 +20,15 @@ export default {
   },
   mounted () {
     window.addEventListener('resize', this.handleResize);
-    this.handleResize();
+  //  this.handleResize();
     this.getContents();
   },
   methods: {
-    handleResize() {
-      const clientWidth = document.documentElement.clientWidth;
-      let middleText = document.getElementsByClassName('middle-text');
-      middleText[0].style.width = ((clientWidth - 90) + 'px');
-    },
+  //  handleResize() {
+  //    const clientWidth = document.documentElement.clientWidth;
+  //   let middleText = document.getElementsByClassName('middle-text');
+  //    middleText[0].style.width = ((clientWidth - 90) + 'px');
+  //  },
     getContents() {
       // calculate days
       this.calculateCurrentMonth();
@@ -72,8 +72,8 @@ export default {
   <div>
     <div class='time-container'>
       <div class='left-button' @click="changeCurrentMonth((-1))"></div>
-      <div class='middle-text'>{{currentMonth}}개월</div>
       <div class='right-button' @click="changeCurrentMonth(1)"></div>
+      <div class='middle-text'>{{currentMonth}}개월</div>
     </div>
     <div class='my-baby-md-container'>
       <div v-for="item in monthInformation" :key="item.index">
@@ -100,7 +100,6 @@ export default {
 
 .middle-text {
   height: 45px;
-  float: left;
   text-align: center;
   line-height: 45px;
 }
@@ -110,7 +109,7 @@ export default {
   height: 45px;
   background: url('../assets/icons/my-baby/icons8-chevron-right-96.png') no-repeat center;
   background-size: 40px 40px;
-  float: left;
+  float: right;
 }
 .time-container:after {
 	content: '';

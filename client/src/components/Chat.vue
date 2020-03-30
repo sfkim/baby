@@ -32,8 +32,10 @@ export default {
     handleResize() {
       var clientWidth = document.documentElement.clientWidth;
       var content = document.getElementsByClassName('md-container');
-      for(var i = 0; i < content.length; i++) {
-        content[i].style.width = ((clientWidth - 102) + 'px');
+      if (!matchMedia('screen and (min-width: 1024px)').matches) {
+        for(var i = 0; i < content.length; i++) {
+          content[i].style.width = ((clientWidth - 102) + 'px');
+        }
       }
     },
     scrollToLastItem() {
@@ -87,10 +89,11 @@ export default {
 }
 
 .md-container {
+    display: inline-block;
     width: 310px;
     min-height: 50px;
     max-height: 500px;
-    margin-left: 75px;
+    margin-left: 15px;
     margin-bottom: 25px;
     overflow: scroll;
     border-radius: 3px 13px 13px 13px !important;
@@ -139,8 +142,14 @@ export default {
 
 @media screen and (max-width: 360px) {
     .md-container {
-        width: 258px;
+      width: 258px;
     }
+}
+@media screen and (min-width: 1024px) {
+	.md-container {
+		max-width: 1000px;
+		width: auto;
+	}
 }
 </style>
 

@@ -26,7 +26,8 @@ export default {
     handleResize() {
       var clientHeight = document.documentElement.clientHeight;
       var content = document.getElementsByClassName('content');
-      content[0].style.height = ((clientHeight - 120) + 'px');
+      var margin = matchMedia('screen and (min-width: 1024px)').matches ? 90 : 120;
+      content[0].style.height = ((clientHeight - margin) + 'px');
     }
   }
 }
@@ -103,5 +104,20 @@ body {
 .search_wrap {
     position: absolute;
     bottom: 70px;
+}
+@media screen and (min-width: 1024px) {
+	.bottom {
+		width: 100%;
+		height: 30px;
+		margin: 0 auto;
+		top: 60px;
+		border: 1px solid #a0a0a0;
+		box-sizing: border-box;
+	}
+	.content {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 90px;
+	}
 }
 </style>
