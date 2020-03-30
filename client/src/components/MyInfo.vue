@@ -63,16 +63,26 @@ export default {
     ...mapGetters([
       'userInformation',
       'monthInformation'
-    ])
+    ]),
+    unableLeftButtonObject: function () {
+      return  {
+        'button-unable': (this.currentMonth ==0)
+      }
+    },
+    unableRightButtonObject: function () {
+      return  {
+        'button-unable': (this.currentMonth == 12)
+      }
+    }
   }
 }
 </script>
 
 <template>
   <div>
+    <div class='left-button' v-bind:class="unableLeftButtonObject" @click="changeCurrentMonth((-1))"></div>
+    <div class='right-button' v-bind:class="unableRightButtonObject" @click="changeCurrentMonth(1)"></div>
     <div class='time-container'>
-      <div class='left-button' @click="changeCurrentMonth((-1))"></div>
-      <div class='right-button' @click="changeCurrentMonth(1)"></div>
       <div class='middle-text'>{{currentMonth}}개월</div>
     </div>
     <div class='my-baby-md-container'>
@@ -91,11 +101,29 @@ export default {
 }
 
 .left-button {
+  position: fixed;
+  top: 50%;
+  opacity: 0.5;
   width: 45px;
   height: 45px;
   background: url('../assets/icons/my-baby/icons8-chevron-left-96.png') no-repeat center;
   background-size: 40px 40px;
   float: left;
+}
+
+.right-button {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  opacity: 0.5;
+  width: 45px;
+  height: 45px;
+  background: url('../assets/icons/my-baby/icons8-chevron-right-96.png') no-repeat center;
+  background-size: 40px 40px;
+}
+
+.button-unable {
+  opacity: 0;
 }
 
 .middle-text {
@@ -104,22 +132,15 @@ export default {
   line-height: 45px;
 }
 
-.right-button {
-  width: 45px;
-  height: 45px;
-  background: url('../assets/icons/my-baby/icons8-chevron-right-96.png') no-repeat center;
-  background-size: 40px 40px;
-  float: right;
-}
 .time-container:after {
 	content: '';
 	clear: both;
 	display: block;
 }
 .my-baby-md-container {
-  width: 90%;
+  width: 80%;
   overflow: scroll;
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
 }
 
 .my-baby-md-container .markdown-body {
