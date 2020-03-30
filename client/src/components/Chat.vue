@@ -93,7 +93,7 @@ export default {
     width: 310px;
     min-height: 50px;
     max-height: 500px;
-    margin-left: 75px;
+    margin-left: 15px;
     margin-bottom: 25px;
     overflow: scroll;
     border-radius: 3px 13px 13px 13px !important;
