@@ -145,6 +145,5 @@ export default {
 
 .my-baby-md-container .markdown-body {
     margin-top: 20px;
-
 }
 </style>

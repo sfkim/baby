@@ -48,6 +48,7 @@ import { mapGetters } from 'vuex';
 .footer-container {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 .footer {
   display: table;
@@ -60,12 +61,12 @@ import { mapGetters } from 'vuex';
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 40px;
-  background-color: white;
+  background-color: transparent;
+  vertical-align: bottom;
 }
 .footer_link {
   display: block;
   position: relative;
-  top: 38px;
   font-size: 16px;
   text-align: center;
 }
@@ -118,18 +119,22 @@ import { mapGetters } from 'vuex';
 		width: 60%;
 		margin: 0 auto;
 	}
-	.footer-item {
-		background-size: 0;
+	.footer_item {
+		text-align: center;
+		vertical-align: middle;
 	}
 	.footer_link {
-		top: 7px;
+		display: inline-block;
+		height: 100%;
+		vertical-align: bottom;
 	}
 	.footer_focus {
 		color: darkcyan;
-		background-color: white;
+		background: transparent;
 	}
 	.focused {
-		border-bottom: 3px solid darkcyan;
+		border-bottom: 7px solid darkcyan;
+		box-sizing: border-box;
 	}
 }
 </style>

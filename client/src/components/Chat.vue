@@ -146,8 +146,12 @@ export default {
     }
 }
 @media screen and (min-width: 1024px) {
+	.message-container {
+		max-height: none;
+	}
 	.md-container {
 		max-width: 1000px;
+		max-height: none;
 		width: auto;
 	}
 }
