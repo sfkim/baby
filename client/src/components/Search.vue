@@ -43,11 +43,10 @@ export default {
 <style>
 .search-bar {
     width: 100%;
-    height: 100%;
+    height: 60px;
 }
 
 #search-box {
-    height: 100%;
     padding-left: 10px;
 }
 
@@ -73,7 +72,7 @@ export default {
 }
 
 input[type=search] {
-    outline: none;
+   outline: none;
 	-webkit-appearance: textfield;
 	-webkit-box-sizing: content-box;
 	font-family: inherit;
@@ -111,5 +110,12 @@ input[type=search]:focus {
 input:-moz-placeholder,
 input::-webkit-input-placeholder {
 	color: #999;
+}
+@media screen and (min-width: 1024px) {
+	#search-box input[type=search] {
+		width: 300px;
+		height: 20px;
+		background-color: #fff;
+	}
 }
 </style>
