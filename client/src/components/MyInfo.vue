@@ -12,7 +12,7 @@ export default {
   },
   data () {
     return {
-      currentMonth: 0
+      currentMonth: parseInt(this.$route.query.month)
     }
   },
   props: {
@@ -31,7 +31,7 @@ export default {
   //  },
     getContents() {
       // calculate days
-      this.calculateCurrentMonth();
+      if (!this.$route.query.month) this.calculateCurrentMonth();
       // get current month information
       this.getCurrentMonthInformation(this.currentMonth);
     },

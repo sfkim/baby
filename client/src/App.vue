@@ -5,6 +5,7 @@ import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Search from './components/Search.vue'
 import router from './router';
+import resetCSS from './assets/css/reset.css'
 
 
 export default {
