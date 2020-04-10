@@ -1,16 +1,162 @@
 <script>
+import Datepicker from 'vuejs-datepicker';
+import PrettyRadio from 'pretty-checkbox-vue/radio';
+import '../../node_modules/pretty-checkbox/src/pretty-checkbox.scss';
+
 export default {
   name: 'Setting',
+  components: {
+    Datepicker,
+    PrettyRadio
+  },
   props: {
     msg: String
+  },
+  data () {
+    return {
+      isBabyModal: false
+    }
+  },
+  methods: {
+    clickPlusBaby() {
+        this.isBabyModal = true;
+    },
+    clickCancel() {
+        this.isBabyModal = false;
+    },
+    clickSubmit() {
+        this.isBabyModal = false;
+    }
   }
 }
 </script>
 
 <template>
-  <div>
+  <div class='setting-container' v-bind:class="{'setting-bg': this.isBabyModal}">
+    <div class='baby-information-container'>
+        <h1>아기 정보</h1>
+        <hr class='horizon-line'>
+        <div class='plus-baby' @click=clickPlusBaby()></div>
+    </div>
+    <div v-if="isBabyModal" class='add-baby-container'>
+        <div class='input-container'>
+            <div class='baby-info-title'>아기 이름</div>
+            <div class='baby-info-input'>
+                <input placeholder='이름을 입력해주세요'/>
+            </div>
+            <div class='baby-info-title'>아기 생일</div>
+            <div class='baby-info-input'>
+                <datepicker placeholder="Select Date"></datepicker>
+            </div>
+            <div class='baby-info-title'>아기 성별</div>
+            <div class='baby-info-radio'>
+                <prettyRadio class="p-icon p-round p-plain p-smooth" name="plain" color="success-o">
+                    <i slot="extra" class="icon icon-custom icon-boy"></i>
+                    왕자님
+                </prettyRadio>
+                <prettyRadio class="p-icon p-round p-plain p-smooth" name="plain" color="success-o">
+                    <i slot="extra" class="icon icon-custom icon-girl"></i>
+                    공주님
+                </prettyRadio>
+            </div>
+            <hr class='horizon-line'>
+            <div class='info-table'>
+                <div class='info-table-row'>
+                    <div class='baby-info-cancel' @click=clickCancel()>CANCEL</div>
+                    <div class='baby-info-submit' @click=clickSubmit()>SUBMIT</div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
 <style>
+.setting-container {
+    width: 100%;
+    height: 100%;
+}
+.setting-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.baby-information-container {
+    padding: 20px;
+}
+.horizon-line {
+    color: #94a698;
+}
+.plus-baby {
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 40px;
+    background-color: transparent;
+    vertical-align: bottom;
+    background-image: url('../assets/icons/icons8-plus-64.png');
+}
+
+.add-baby-container {
+    padding: 40px;
+}
+.input-container {
+    padding: 20px;
+    border: solid black 1px;
+    background-color: rgba(255, 255, 255, 1);
+}
+.baby-info-title {
+    font-size: 15px;
+    color: rgb(153, 153, 153);
+    margin-top: 20px;
+}
+.baby-info-input {
+    margin-bottom: 40px;
+}
+.baby-info-radio{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.baby-info-input input {
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    color: black;
+    padding: 5px;
+}
+.icon-custom {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 19px;
+    background-color: transparent;
+    vertical-align: bottom;
+}
+.icon-boy {
+    background-image: url('../assets/icons/icons8-sleeping-baby-48.png');
+    margin-top: -3px;
+}
+.icon-girl {
+    background-image: url('../assets/icons/icons8-sleeping-baby-girl-48.png');
+    margin-top: -1px;
+}
+.info-table {
+    display: table;
+    width: 100%;
+}
+.info-table-row {
+    display: table-row;
+}
+.baby-info-cancel {
+    display: table-cell;
+    font-size: 25px;
+    color: rgb(153, 153, 153);
+    padding: 10px;
+    text-align: left;
+}
+.baby-info-submit {
+    display: table-cell;
+    font-size: 25px;
+    color: rgb(73, 165, 200);
+    padding: 10px;
+    text-align: right;
+}
 </style>
