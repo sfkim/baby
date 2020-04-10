@@ -7,6 +7,7 @@ import Search from './components/Search.vue'
 import router from './router';
 import resetCSS from './assets/css/reset.css'
 
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'app',
@@ -22,8 +23,12 @@ export default {
   mounted () {
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+    this.setBabyInfo(JSON.parse(localStorage.getItem('babyInformation')));
   },
   methods: {
+    ...mapMutations ([
+        'setBabyInfo'
+    ]),
     handleResize() {
       var clientHeight = document.documentElement.clientHeight;
       var content = document.getElementsByClassName('content');

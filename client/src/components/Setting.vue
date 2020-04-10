@@ -3,6 +3,9 @@ import Datepicker from 'vuejs-datepicker';
 import PrettyRadio from 'pretty-checkbox-vue/radio';
 import '../../node_modules/pretty-checkbox/src/pretty-checkbox.scss';
 
+import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Setting',
   components: {
@@ -18,6 +21,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations ([
+        'setBabyInfo'
+    ]),
     clickPlusBaby() {
         this.isBabyModal = true;
     },
@@ -26,7 +32,28 @@ export default {
     },
     clickSubmit() {
         this.isBabyModal = false;
+        var babyInformation = {
+            babyName: this.babyName,
+            babyBirth: this.babyBirth,
+            babySex: this.babySex
+        }
+
+        var babyInformationArray = this.babyInformation;
+        if (babyInformationArray == null) {
+            babyInformationArray = [];
+        }
+        babyInformationArray.push(babyInformation);
+
+        localStorage.setItem('babyInformation', JSON.stringify(babyInformationArray));
+        this.setBabyInfo(babyInformationArray);
+
+        this.babyName = this.babyBirth = this.babySex = '';
     }
+  },
+  computed: {
+    ...mapGetters([
+      'babyInformation'
+    ])
   }
 }
 </script>
@@ -36,26 +63,36 @@ export default {
     <div class='baby-information-container'>
         <h1>아기 정보</h1>
         <hr class='horizon-line'>
+        <div class='get-baby-container' v-for="item in babyInformation" :key="item.babyName">
+            <div class='get-baby-title'> 아기 이름 </div>
+            <div class='get-baby-value'> {{ item.babyName }} </div>
+            <div class='get-baby-title'> 아기 생일 </div>
+            <div class='get-baby-value'> {{ item.babyBirth }} </div>
+            <div class='get-baby-title'> 아기 성별 </div>
+            <div class='get-baby-value' v-if="item.babySex == 0"> 공주님 </div>
+            <div class='get-baby-value' v-if="item.babySex == 1"> 왕자님 </div>
+        </div>
         <div class='plus-baby' @click=clickPlusBaby()></div>
     </div>
+
     <div v-if="isBabyModal" class='add-baby-container'>
         <div class='input-container'>
             <div class='baby-info-title'>아기 이름</div>
             <div class='baby-info-input'>
-                <input placeholder='이름을 입력해주세요'/>
+                <input v-model='babyName' placeholder='이름을 입력해주세요'/>
             </div>
             <div class='baby-info-title'>아기 생일</div>
             <div class='baby-info-input'>
-                <datepicker placeholder="Select Date"></datepicker>
+                <datepicker v-model='babyBirth' placeholder='Select Date' ></datepicker>
             </div>
             <div class='baby-info-title'>아기 성별</div>
             <div class='baby-info-radio'>
-                <prettyRadio class="p-icon p-round p-plain p-smooth" name="plain" color="success-o">
+                <prettyRadio v-model='babySex' value='1' class='p-icon p-round p-plain p-smooth' name='plain' color='success-o'>
                     <i slot="extra" class="icon icon-custom icon-boy"></i>
                     왕자님
                 </prettyRadio>
-                <prettyRadio class="p-icon p-round p-plain p-smooth" name="plain" color="success-o">
-                    <i slot="extra" class="icon icon-custom icon-girl"></i>
+                <prettyRadio v-model='babySex' value='0' class='p-icon p-round p-plain p-smooth' name='plain' color='success-o'>
+                    <i slot='extra' class='icon icon-custom icon-girl'></i>
                     공주님
                 </prettyRadio>
             </div>
@@ -95,8 +132,21 @@ export default {
     vertical-align: bottom;
     background-image: url('../assets/icons/icons8-plus-64.png');
 }
-
+.get-baby-container {
+    padding: 20px;
+}
+.get-baby-title {
+    font-size: 15px;
+    color: rgb(153, 153, 153);
+    margin-top: 20px;
+}
+.get-baby-value {
+    font-size: 20px;
+    color: black;
+}
 .add-baby-container {
+    position: fixed;
+    top: 15%;
     padding: 40px;
 }
 .input-container {

@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import Axios from 'axios';
 
 Vue.use (Vuex);
-const DM_SERVER = 'http://15.165.90.78:8895/';
+const DM_SERVER = 'http://10.113.67.36:8895/';
 
 function defaultState () {
   return {
@@ -18,6 +18,7 @@ function defaultState () {
       babySex: 0, //0 is girl, 1 is boy
       birth: 20191114 // birthday
     },
+    babyInformation: [],
     monthInformation: []
   }
 }
@@ -107,6 +108,9 @@ const store = new Vuex.Store ({
     },
     getCurrentMonthInformation (state, currentMonth) {
       getMonthContents(state, currentMonth);
+    },
+    setBabyInfo(state, babyInfo) {
+        state.babyInformation = babyInfo;
     }
   },
   getters: {
@@ -124,6 +128,9 @@ const store = new Vuex.Store ({
     },
     monthInformation: state => {
       return state.monthInformation
+    },
+    babyInformation: state => {
+      return state.babyInformation
     }
   }
 });
