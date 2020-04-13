@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import Axios from 'axios';
 
 Vue.use (Vuex);
-const DM_SERVER = 'http://10.113.67.36:8895/';
+const DM_SERVER = 'http://15.165.90.78:8895/';
 
 function defaultState () {
   return {
