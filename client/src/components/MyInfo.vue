@@ -20,19 +20,11 @@ export default {
   },
   mounted () {
     window.addEventListener('resize', this.handleResize);
-  //  this.handleResize();
     this.getContents();
   },
   methods: {
-  //  handleResize() {
-  //    const clientWidth = document.documentElement.clientWidth;
-  //   let middleText = document.getElementsByClassName('middle-text');
-  //    middleText[0].style.width = ((clientWidth - 90) + 'px');
-  //  },
     getContents() {
-      // calculate days
       if (!this.$route.query.month) this.calculateCurrentMonth();
-      // get current month information
       this.getCurrentMonthInformation(this.currentMonth);
     },
     changeCurrentMonth(changeMonth) {
@@ -43,13 +35,9 @@ export default {
     },
     calculateCurrentMonth() {
       const today = new Date();
-      const birth = this.userInformation.birth;
-      const year = parseInt(birth/10000);
-      const month = parseInt((birth%10000)/100);
-      const day = birth%100;
+      const birthDate = new Date(this.babyInformation[0].babyBirth);
       const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const secondDate = new Date(year, month-1, day);
-      const diffDays = Math.round(Math.abs((today - secondDate) / oneDay));
+      const diffDays = Math.round(Math.abs((today - birthDate) / oneDay));
       let currentMonth = parseInt(diffDays / 30)
       if ((diffDays/3)%10 > 5) currentMonth = currentMonth + 1;
       this.currentMonth = currentMonth;
@@ -61,8 +49,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'userInformation',
-      'monthInformation'
+      'monthInformation',
+      'babyInformation'
     ]),
     unableLeftButtonObject: function () {
       return  {

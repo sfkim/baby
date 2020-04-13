@@ -14,10 +14,6 @@ function defaultState () {
       speaker: 'bot',
       content: '#### 안녕하세요. \n 우리아기앱에 질문해주셔서 감사합니다.'
     },],
-    userInformation: {
-      babySex: 0, //0 is girl, 1 is boy
-      birth: 20191114 // birthday
-    },
     babyInformation: [],
     monthInformation: []
   }
@@ -53,7 +49,7 @@ function getMonthContents (state, currentMonth) {
   // 신체 성장 표준치
   const growthID = 240;
   let growthChip = currentMonth;
-  if (state.userInformation.babySex == 0) growthChip += 100;
+  if (state.babyInformation[0].babySex == 0) growthChip += 100;
 
   Axios.get(DM_SERVER + 'get_content?classID=' + growthID + '&chip=' + growthChip)
     .then(res => {

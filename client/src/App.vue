@@ -20,10 +20,12 @@ export default {
       'currentPage'
     ])
   },
+  created () {
+    this.setBabyInfo(JSON.parse(localStorage.getItem('babyInformation')));
+  },
   mounted () {
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
-    this.setBabyInfo(JSON.parse(localStorage.getItem('babyInformation')));
   },
   methods: {
     ...mapMutations ([
