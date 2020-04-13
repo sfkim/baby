@@ -17,7 +17,11 @@ export default {
   },
   data () {
     return {
-      isBabyModal: false
+      isBabyModal: false,
+      isBabyAdded: localStorage.getItem('isBabyAdded'),
+      babyName: '',
+      babyBirth: '',
+      babySex: 0
     }
   },
   methods: {
@@ -27,27 +31,37 @@ export default {
     clickPlusBaby() {
         this.isBabyModal = true;
     },
+    clickEditBaby() {
+        this.isBabyModal = true;
+        this.babyName = this.babyInformation[0].babyName;
+        this.babySex = this.babyInformation[0].babySex;
+    },
     clickCancel() {
         this.isBabyModal = false;
     },
     clickSubmit() {
         this.isBabyModal = false;
-        var babyInformation = {
+        var addBabyBirth= this.babyBirth.getFullYear() + '/' + (this.babyBirth.getMonth() + 1) + '/' + this.babyBirth.getDate();
+        var addBabyInformation = {
             babyName: this.babyName,
-            babyBirth: this.babyBirth,
+            babyBirth: addBabyBirth,
             babySex: this.babySex
         }
 
-        var babyInformationArray = this.babyInformation;
-        if (babyInformationArray == null) {
-            babyInformationArray = [];
-        }
-        babyInformationArray.push(babyInformation);
-
+        // for now, support jusy the one baby
+        var babyInformationArray = [];
+        babyInformationArray.push(addBabyInformation);
         localStorage.setItem('babyInformation', JSON.stringify(babyInformationArray));
+        localStorage.setItem('isBabyAdded', true);
         this.setBabyInfo(babyInformationArray);
-
-        this.babyName = this.babyBirth = this.babySex = '';
+        this.isBabyAdded = true;
+    },
+    customFormatter(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        date = year + '/' + month + '/' + day;
+        return date;
     }
   },
   computed: {
@@ -64,6 +78,7 @@ export default {
         <h1>아기 정보</h1>
         <hr class='horizon-line'>
         <div class='get-baby-container' v-for="item in babyInformation" :key="item.babyName">
+            <div class='edit-baby' @click=clickEditBaby()></div>
             <div class='get-baby-title'> 아기 이름 </div>
             <div class='get-baby-value'> {{ item.babyName }} </div>
             <div class='get-baby-title'> 아기 생일 </div>
@@ -72,7 +87,7 @@ export default {
             <div class='get-baby-value' v-if="item.babySex == 0"> 공주님 </div>
             <div class='get-baby-value' v-if="item.babySex == 1"> 왕자님 </div>
         </div>
-        <div class='plus-baby' @click=clickPlusBaby()></div>
+        <div class='plus-baby' @click=clickPlusBaby() v-if="!isBabyAdded"></div>
     </div>
 
     <div v-if="isBabyModal" class='add-baby-container'>
@@ -83,7 +98,7 @@ export default {
             </div>
             <div class='baby-info-title'>아기 생일</div>
             <div class='baby-info-input'>
-                <datepicker v-model='babyBirth' placeholder='Select Date' ></datepicker>
+                <datepicker v-model='babyBirth' placeholder='Select Date' :format='customFormatter'></datepicker>
             </div>
             <div class='baby-info-title'>아기 성별</div>
             <div class='baby-info-radio'>
@@ -132,17 +147,30 @@ export default {
     vertical-align: bottom;
     background-image: url('../assets/icons/icons8-plus-64.png');
 }
+.edit-baby {
+    position: absolute;
+    right: 10%;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 25px;
+    background-color: transparent;
+    vertical-align: bottom;
+    background-image: url('../assets/icons/icons8-edit-48.png');
+}
 .get-baby-container {
     padding: 20px;
 }
 .get-baby-title {
     font-size: 15px;
     color: rgb(153, 153, 153);
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 .get-baby-value {
     font-size: 20px;
     color: black;
+    margin-bottom: 20px;
 }
 .add-baby-container {
     position: fixed;
