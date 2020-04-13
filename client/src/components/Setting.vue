@@ -35,6 +35,7 @@ export default {
         this.isBabyModal = true;
         this.babyName = this.babyInformation[0].babyName;
         this.babySex = this.babyInformation[0].babySex;
+        this.babyBirth = new Date(this.babyInformation[0].babyBirth);
     },
     clickCancel() {
         this.isBabyModal = false;
