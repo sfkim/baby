@@ -35,12 +35,16 @@ export default {
     },
     calculateCurrentMonth() {
       const today = new Date();
-      const birthDate = new Date(this.babyInformation[0].babyBirth);
-      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const diffDays = Math.round(Math.abs((today - birthDate) / oneDay));
-      let currentMonth = parseInt(diffDays / 30)
-      if ((diffDays/3)%10 > 5) currentMonth = currentMonth + 1;
-      this.currentMonth = currentMonth;
+      if (this.babyInformation == null) {
+        this.currentMonth = 0;
+      } else {
+          const birthDate = new Date(this.babyInformation[0].babyBirth);
+          const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+          const diffDays = Math.round(Math.abs((today - birthDate) / oneDay));
+          let currentMonth = parseInt(diffDays / 30)
+          if ((diffDays/3)%10 > 5) currentMonth = currentMonth + 1;
+          this.currentMonth = currentMonth;
+      }
     },
     ...mapMutations ([
       'updateCurrentPage',

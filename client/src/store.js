@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import Axios from 'axios';
 
 Vue.use (Vuex);
-const DM_SERVER = 'http://10.113.67.36:8895/';
+const DM_SERVER = 'http://15.165.90.78:8895/';
 
 function defaultState () {
   return {
@@ -49,7 +49,9 @@ function getMonthContents (state, currentMonth) {
   // 신체 성장 표준치
   const growthID = 240;
   let growthChip = currentMonth;
-  if (state.babyInformation[0].babySex == 0) growthChip += 100;
+
+  if (state.babyInformation == null) growthChip += 100;
+  else if (state.babyInformation[0].babySex == 0) growthChip += 100;
 
   Axios.get(DM_SERVER + 'get_content?classID=' + growthID + '&chip=' + growthChip)
     .then(res => {
@@ -82,8 +84,6 @@ function getMonthContents (state, currentMonth) {
             })
         })
     })
-
-  console.log(state.monthInformation);
 }
 
 const store = new Vuex.Store ({
