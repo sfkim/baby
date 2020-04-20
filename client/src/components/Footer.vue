@@ -23,17 +23,8 @@ export default {
 <template>
     <div class="footer-container">
         <ul class="footer">
-            <li class="footer_item" :class="{footer_focus: $route.name == 'Home'}" id="icon-home" @click="page('/')">
-                <span class="footer_link" :class="{focused: $route.name == 'Home'}">홈</span>
-            </li>
             <li class="footer_item" :class="{footer_focus: $route.name == 'MyInfo'}" id="icon-my-info" @click="page('/MyInfo')">
                 <span class="footer_link" :class="{focused: $route.name == 'MyInfo'}">나의 아기</span>
-            </li>
-            <li class="footer_item" :class="{footer_focus: $route.name == 'Chat'}" id="icon-chat" @click="page('/Chat')">
-                <span class="footer_link" :class="{focused: $route.name == 'Chat'}">채팅</span>
-            </li>
-            <li class="footer_item" :class="{footer_focus: $route.name == 'Wiki'}" id="icon-wiki" @click="page('/Wiki')">
-                <span class="footer_link" :class="{focused: $route.name == 'Wiki'}">아기 사전</span>
             </li>
             <li class="footer_item" :class="{footer_focus: $route.name == 'Setting'}" id="icon-setting" @click="page('/Setting')">
                 <span class="footer_link" :class="{focused: $route.name == 'Setting'}">설정</span>

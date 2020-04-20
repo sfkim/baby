@@ -3,7 +3,6 @@
 import { mapGetters } from 'vuex';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import Search from './components/Search.vue'
 import router from './router';
 import resetCSS from './assets/css/reset.css'
 
@@ -13,7 +12,7 @@ export default {
     name: 'app',
     components: {
         //사용할 components 이름 추가(import 이름과 동일)
-        Header, Footer, Search
+        Header, Footer
     },
     computed: {
         ...mapGetters([
@@ -51,9 +50,6 @@ export default {
 
         <div class='content'>
             <router-view id="view" default="/" :key="$route.fullPath"></router-view>
-            <div class="search_wrap">
-                <Search v-if='!isPopup'></Search>
-            </div>
         </div>
 
         <!-- Footer를 위치시킬 공간 지정(bottom class로 지정)-->
