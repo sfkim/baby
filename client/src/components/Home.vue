@@ -2,29 +2,28 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Home',
-  data () {
-    return {
-      monthlySummary: [
-        {month: 0, movement: '팔다리를 구부 리고 있을 수도 있다.'},
-        {month: 1, movement: '엎어놓으면 턱을 들고 머리를 좌우로 돌릴 수 있다.'},
-        {month: 2, movement: '엎어 배를 받쳐 들어 올리면 머리를 몸과 수평이 되도록 들 수 있다.'},
-        {month: 3, movement: '엎어 배를 받쳐 들어 올리면 머리를 몸 위치보다 위로 들 수 있다.'},
-        {month: 4, movement: '다리를 펴고 있을 수 있다.'},
-        {month: 5, movement: '바로 누운 자세에서 붙잡아 일으켜 앉히면 머리를 가눌 수 있다.'},
-        {month: 6, movement: '앉혀 놓으면 혼자  앉아 있을 수 있다.'},
-        {month: 7, movement: '배밀이를 하거나 네 발로 길 수 있다.'},
-        {month: 8, movement: '세우면 다리를 뻗어 몸을 지탱할 수 있다.'},
-        {month: 9, movement: '임시 자료'},
-        {month: 10, movement: '임시 자료'},
-        {month: 11, movement: '임시 자료'},
-        {month: 12, movement: '혼자 일어설 수 있다. 혼자 걸을 수 있다.'}
-      ]
-    }
-  },
-  methods: {
-    page(targetComponent, targetMonth) {
-
+    name: 'Home',
+    data () {
+        return {
+            monthlySummary: [
+                {month: 0, movement: '팔다리를 구부 리고 있을 수도 있다.'},
+                {month: 1, movement: '엎어놓으면 턱을 들고 머리를 좌우로 돌릴 수 있다.'},
+                {month: 2, movement: '엎어 배를 받쳐 들어 올리면 머리를 몸과 수평이 되도록 들 수 있다.'},
+                {month: 3, movement: '엎어 배를 받쳐 들어 올리면 머리를 몸 위치보다 위로 들 수 있다.'},
+                {month: 4, movement: '다리를 펴고 있을 수 있다.'},
+                {month: 5, movement: '바로 누운 자세에서 붙잡아 일으켜 앉히면 머리를 가눌 수 있다.'},
+                {month: 6, movement: '앉혀 놓으면 혼자  앉아 있을 수 있다.'},
+                {month: 7, movement: '배밀이를 하거나 네 발로 길 수 있다.'},
+                {month: 8, movement: '세우면 다리를 뻗어 몸을 지탱할 수 있다.'},
+                {month: 9, movement: '임시 자료'},
+                {month: 10, movement: '임시 자료'},
+                {month: 11, movement: '임시 자료'},
+                {month: 12, movement: '혼자 일어설 수 있다. 혼자 걸을 수 있다.'}
+            ]
+        }
+    },
+    methods: {
+        page(targetComponent, targetMonth) {
 			this.$router.push(targetComponent).catch(err => {});
 		},
 		horizontalScroll(index) {
@@ -32,41 +31,41 @@ export default {
 			let elementWidth = document.documentElement.clientWidth;
 			element.scrollLeft = index * elementWidth;
 		}
-  },
-  computed: {
-    ...mapGetters([
-      'monthInformation'
-    ])
-  }
+    },
+    computed: {
+        ...mapGetters([
+            'monthInformation'
+        ])
+    }
 }
 </script>
 
 <template>
-  <div class='home_wrap'>
-    <div id='monthly-development'>
-      <ol id='month-container'>
-        <li v-for='item in monthlySummary' :key='item.month' class ='month-wrap' @click='page("/MyInfo?month="+item.month)'>
-					<article class='summary-wrap'>
-						<h3 class='summary-head'>[운동]</h3>
-						<p class='summary-content'>{{item.movement}}</p>
-						<span class='wanna-detail'>이미지 클릭시 상세정보</span>
-					</article>
-        </li>
-      </ol>
+    <div class='home_wrap'>
+        <div id='monthly-development'>
+            <ol id='month-container'>
+                <li v-for='item in monthlySummary' :key='item.month' class ='month-wrap' @click='page("/MyInfo?month="+item.month)'>
+                    <article class='summary-wrap'>
+                        <h3 class='summary-head'>[운동]</h3>
+                        <p class='summary-content'>{{item.movement}}</p>
+                        <span class='wanna-detail'>이미지 클릭시 상세정보</span>
+                    </article>
+                 </li>
+            </ol>
+        </div>
+        <section id='months'>
+            <ol id='month-nav-container'>
+                <li v-for='item in monthlySummary' :key='item.month' class='month-nav' tabindex='1' @click='horizontalScroll(item.month)'>
+                    <span class="month-nav-text">{{item.month}}개월</span>
+                </li>
+            </ol>
+        </section>
     </div>
-    <section id='months'>
-      <ol id='month-nav-container'>
-        <li v-for='item in monthlySummary' :key='item.month' class='month-nav' tabindex='1' @click='horizontalScroll(item.month)'>
-          <span class="month-nav-text">{{item.month}}개월</span>
-        </li>
-      </ol>
-     </section>
-  </div>
 </template>
 
 <style>
 .home_wrap {
-  width: 100%;
+    width: 100%;
 }
 #monthly-development {
 	overflow-x: scroll;
@@ -121,8 +120,8 @@ export default {
 	padding: 0 15px;
 }
 .month-nav {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 	width: 60px;
 	height: 60px;
 	background-color: gray;

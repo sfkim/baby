@@ -1,14 +1,11 @@
 <script>
 export default {
-  name: 'Wiki',
-  props: {
-    msg: String
-  }
+    name: 'Wiki'
 }
 </script>
 
 <template>
-  <div>Wiki page</div>
+    <div>Wiki page</div>
 </template>
 
 <style>

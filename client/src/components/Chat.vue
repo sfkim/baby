@@ -4,45 +4,38 @@ import MarkdownItVue from 'markdown-it-vue'
 import '../../node_modules/markdown-it-vue/dist/markdown-it-vue.css'
 
 export default {
-  name: 'Chat',
-  components: {
-    MarkdownItVue
-  },
-  props: {
-  },
-  data () {
-    return {
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'inputMessage',
-      'chatData'
-    ])
-  },
-  mounted () {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  },
-  updated () {
-    console.log("updated");
-    this.scrollToLastItem();
-  },
-  methods: {
-    handleResize() {
-      var clientWidth = document.documentElement.clientWidth;
-      var content = document.getElementsByClassName('md-container');
-      if (!matchMedia('screen and (min-width: 1024px)').matches) {
-        for(var i = 0; i < content.length; i++) {
-          content[i].style.width = ((clientWidth - 102) + 'px');
-        }
-      }
+    name: 'Chat',
+    components: {
+        MarkdownItVue
     },
-    scrollToLastItem() {
-      var content = document.getElementsByClassName('md-container');
-      content[content.length - 1].scrollIntoView({behavior: "smooth"});
+    computed: {
+        ...mapGetters([
+            'inputMessage',
+            'chatData'
+        ])
+    },
+    mounted () {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    updated () {
+        this.scrollToLastItem();
+    },
+    methods: {
+        handleResize() {
+            var clientWidth = document.documentElement.clientWidth;
+            var content = document.getElementsByClassName('md-container');
+            if (!matchMedia('screen and (min-width: 1024px)').matches) {
+                for(var i = 0; i < content.length; i++) {
+                    content[i].style.width = ((clientWidth - 102) + 'px');
+                }
+            }
+        },
+        scrollToLastItem() {
+            var content = document.getElementsByClassName('md-container');
+            content[content.length - 1].scrollIntoView({behavior: "smooth"});
+        }
     }
-  }
 }
 </script>
 
@@ -76,7 +69,6 @@ export default {
     width: 100%;
     margin-top: 15px;
 }
-
 .popo-profile {
     width: 50px;
     height: 50px;
@@ -87,7 +79,6 @@ export default {
     background-image: url('../assets/icons/icons8-cute-hamster-96.png');
     background-size: 50px;
 }
-
 .md-container {
     display: inline-block;
     width: 310px;
@@ -101,7 +92,6 @@ export default {
     -webkit-border-radius: 3px 13px 13px 13px !important;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
-
 .user-profile {
     width: 50px;
     height: 50px;
@@ -113,7 +103,6 @@ export default {
     background-size: 50px;
     right: 0px;
 }
-
 .md-container-right {
     min-width: 50px;
     max-width: 200px;
@@ -131,7 +120,6 @@ export default {
     -webkit-border-radius: 13px 3px 13px 13px !important;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
-
 .md-container .markdown-body {
     padding: 10px;
     font-family: 'Jua', 'Nanum Gothic', Helvetica, Apple SD Gothic Neo, sans-serif;
@@ -139,7 +127,6 @@ export default {
         font-family: 'Jua', 'Nanum Gothic', Helvetica, Apple SD Gothic Neo, sans-serif;
     }
 }
-
 @media screen and (max-width: 360px) {
     .md-container {
       width: 258px;
