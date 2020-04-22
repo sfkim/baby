@@ -140,4 +140,9 @@ export default {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+.my-baby-md-container .markdown-body ol, .my-baby-md-container .markdown-body ul{
+    list-style: circle;
+    padding-left: 1em;
+    word-break: keep-all;
+}
 </style>
