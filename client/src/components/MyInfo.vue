@@ -76,6 +76,7 @@ export default {
         <div class='right-button' v-bind:class="unableRightButtonObject" @click="changeCurrentMonth(1)"></div>
         <div class='time-container'>
             <div class='middle-text'>{{currentMonth}}개월</div>
+            <div class='baby-name'>{{babyInformation[0].babyName}}</div>
         </div>
         <div class='my-baby-md-container'>
             <div v-for="item in monthInformation" :key="item.index">
@@ -87,43 +88,44 @@ export default {
 
 <style>
 .time-container {
+    position: relative;
     width: 100%;
     height: 45px;
     background-color: rgb(197, 218, 205);
 }
-
 .left-button {
     position: fixed;
     top: 50%;
+    left: 0;
     opacity: 0.5;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     background: url('../assets/icons/my-baby/icons8-chevron-left-96.png') no-repeat center;
-    background-size: 40px 40px;
-    float: left;
+    background-size: 35px 35px;
 }
-
 .right-button {
     position: fixed;
     top: 50%;
     right: 0;
     opacity: 0.5;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     background: url('../assets/icons/my-baby/icons8-chevron-right-96.png') no-repeat center;
-    background-size: 40px 40px;
+    background-size: 35px 35px;
 }
-
 .button-unable {
     opacity: 0;
 }
-
 .middle-text {
-    height: 45px;
     text-align: center;
     line-height: 45px;
 }
-
+.time-container .baby-name {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    line-height: 45px;
+}
 .time-container:after {
 	content: '';
 	clear: both;
@@ -132,9 +134,8 @@ export default {
 .my-baby-md-container {
     width: 80%;
     overflow: scroll;
-    padding: 0 40px 0 40px;
+    padding: 0 10% 0 10%;
 }
-
 .my-baby-md-container .markdown-body {
     margin-top: 20px;
     margin-bottom: 40px;
