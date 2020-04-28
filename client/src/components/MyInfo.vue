@@ -76,7 +76,7 @@ export default {
         <div class='right-button' v-bind:class="unableRightButtonObject" @click="changeCurrentMonth(1)"></div>
         <div class='time-container'>
             <div class='middle-text'>{{currentMonth}}개월</div>
-            <div class='baby-name'>{{babyInformation[0].babyName}}</div>
+            <div class='baby-name' v-if="babyInformation">{{babyInformation[0].babyName}}</div>
         </div>
         <div class='my-baby-md-container'>
             <div v-for="item in monthInformation" :key="item.index">
