@@ -3,7 +3,7 @@ import router from 'vue-router'
 import Home from './components/Home.vue'
 import MyInfo from './components/MyInfo.vue'
 import Chat from './components/Chat.vue'
-import Wiki from './components/Wiki.vue'
+import Diary from './components/Diary.vue'
 import Setting from './components/Setting.vue'
 
 
@@ -15,7 +15,7 @@ export default new router({
 		{path: '/', name: 'Home', component: Home},
 		{path: '/MyInfo', name: 'MyInfo', component: MyInfo},
 		{path: '/Chat', name: 'Chat', component: Chat},
-		{path: '/Wiki', name: 'Wiki', component: Wiki},
+		{path: '/Diary', name: 'Diary', component: Diary},
 		{path: '/Setting', name: 'Setting', component: Setting}
 	],
 	scrollBehavior (to, from, savedPosition) {

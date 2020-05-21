@@ -32,8 +32,8 @@ export default {
             <li class="footer_item" :class="{footer_focus: $route.name == 'Chat'}" id="icon-chat" @click="page('/Chat')">
                 <span class="footer_link" :class="{focused: $route.name == 'Chat'}">채팅</span>
             </li>
-            <li class="footer_item" :class="{footer_focus: $route.name == 'Wiki'}" id="icon-wiki" @click="page('/Wiki')">
-                <span class="footer_link" :class="{focused: $route.name == 'Wiki'}">아기 사전</span>
+            <li class="footer_item" :class="{footer_focus: $route.name == 'Diary'}" id="icon-wiki" @click="page('/Diary')">
+                <span class="footer_link" :class="{focused: $route.name == 'Diary'}">아기 일기</span>
             </li>
             <li class="footer_item" :class="{footer_focus: $route.name == 'Setting'}" id="icon-setting" @click="page('/Setting')">
                 <span class="footer_link" :class="{focused: $route.name == 'Setting'}">설정</span>
